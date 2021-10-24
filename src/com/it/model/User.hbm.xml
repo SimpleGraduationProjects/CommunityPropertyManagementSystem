@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.it.model.User" table="t_User">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="s_0" column="u_username" />
+		<property name="s_1" column="u_password" />
+		<property name="s_2" column="u_name" />
+		<property name="s_3" column="u_birthday" />
+		<property name="s_4" column="u_sex" />
+		<property name="s_5" column="u_tel" />
+		<property name="s_6" column="u_lxr" />
+		<property name="s_7" column="u_phone" />
+		<property name="s_8" column="u_jg" />
+		<property name="s_9" column="u_address" />
+		<property name="s_10" column="u_bm" />
+		<property name="s_11" column="u_type" />
+		<property name="s_12" column="u_by_1" />
+		<property name="s_13" column="u_by_2" />
+		<property name="s_14" column="u_by_3" />
+		<property name="s_15" column="u_bz" />
+		<property name="s_16" column="u_status" />
+	</class>
+</hibernate-mapping>

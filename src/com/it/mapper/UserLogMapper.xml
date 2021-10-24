@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.UserLogMapper">
+	<resultMap type="UserLog" id="userLogResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="u_num" />
+		<result property="s_1" column="u_start" />
+		<result property="s_2" column="u_info" />
+		<association property="user" column="user_id"  
+			select="com.it.mapper.UserMapper.selectObject"/>
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		delete from t_userLog where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="userLogResultMap">
+		SELECT t_userLog.id,
+			   t_userLog.u_num,
+			   t_userLog.u_start,
+			   t_userLog.u_info,
+			   t_user.id user_id
+		  FROM t_userLog, t_user
+		 WHERE t_userLog.id = #{id}
+		   AND t_userLog.user_id = t_user.id
+	</select>
+
+	<select id="getObjectList"  resultMap="userLogResultMap" parameterType="java.util.Map">
+		SELECT t_userLog.id,
+			   t_userLog.u_num,
+			   t_userLog.u_start,
+			   t_userLog.u_info,
+			   t_user.id user_id
+		  FROM t_userLog, t_user
+		 WHERE 1 = 1
+		   AND t_userLog.user_id = t_user.id
+		<if test="field == 't_user.s_0'">
+			and t_user.u_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_0'">
+			and t_userLog.u_num like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_userLog.u_start like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_2'">
+			and t_userLog.u_info like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="UserLog">
+		INSERT INTO t_userLog(u_num, u_start, u_info, user_id )
+				VALUES(#{s_0}, #{s_1}, #{s_2}, #{user.id})
+	</insert>
+
+	<update id="updateObject" parameterType="UserLog">
+		UPDATE t_userLog set u_num=#{s_0}, u_start=#{s_1}, u_info=#{s_2}, user_id =#{user.id} 
+				where id=#{id}
+	</update>
+
+</mapper>
+

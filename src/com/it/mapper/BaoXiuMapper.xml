@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.BaoXiuMapper">
+	<resultMap type="BaoXiu" id="baoXiuResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="b_name" />
+		<result property="s_1" column="b_time" />
+		<result property="s_2" column="b_type" />
+		<result property="s_3" column="b_neir" />
+		<result property="s_4" column="b_bxsm" />
+		<result property="s_5" column="b_stat" />
+		<result property="s_6" column="b_bz" />
+		<result property="s_7" column="f_status" />
+		<association property="user" column="user_id"  
+			select="com.it.mapper.UserMapper.selectObject"/>
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		update t_baoXiu set f_status = 'N' where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="baoXiuResultMap">
+		SELECT t_baoXiu.id,
+			   t_baoXiu.b_name,
+			   t_baoXiu.b_time,
+			   t_baoXiu.b_type,
+			   t_baoXiu.b_neir,
+			   t_baoXiu.b_bxsm,
+			   t_baoXiu.b_stat,
+			   t_baoXiu.b_bz,
+			   t_baoXiu.f_status,
+			   t_user.id user_id
+		  FROM t_baoXiu, t_user
+		 WHERE t_baoXiu.id = #{id}
+		   AND t_baoXiu.user_id = t_user.id
+	</select>
+
+	<select id="getObjectList"  resultMap="baoXiuResultMap" parameterType="java.util.Map">
+		SELECT t_baoXiu.id,
+			   t_baoXiu.b_name,
+			   t_baoXiu.b_time,
+			   t_baoXiu.b_type,
+			   t_baoXiu.b_neir,
+			   t_baoXiu.b_bxsm,
+			   t_baoXiu.b_stat,
+			   t_baoXiu.b_bz,
+			   t_baoXiu.f_status,
+			   t_user.id user_id
+		  FROM t_baoXiu, t_user
+		 WHERE 1 = 1 AND t_baoXiu.f_status = 'Y'
+		   AND t_baoXiu.user_id = t_user.id
+		<if test="field == 't_user.s_2'">
+			and t_user.u_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_0'">
+			and t_baoXiu.b_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_baoXiu.b_time like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_2'">
+			and t_baoXiu.b_type like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_3'">
+			and t_baoXiu.b_neir like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_4'">
+			and t_baoXiu.b_bxsm like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_5'">
+			and t_baoXiu.b_stat like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_6'">
+			and t_baoXiu.b_bz like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="BaoXiu">
+		INSERT INTO t_baoXiu(b_name, b_time, b_type, b_neir, b_bxsm, b_stat, b_bz, f_status, user_id )
+				VALUES(#{s_0}, #{s_1}, #{s_2}, #{s_3}, #{s_4}, #{s_5}, #{s_6}, 'Y', #{user.id})
+	</insert>
+
+	<update id="updateObject" parameterType="BaoXiu">
+		UPDATE t_baoXiu set b_name=#{s_0}, b_time=#{s_1}, b_type=#{s_2}, b_neir=#{s_3}, b_bxsm=#{s_4}, b_stat=#{s_5}, b_bz=#{s_6}, user_id =#{user.id} 
+				where id=#{id}
+	</update>
+
+</mapper>
+

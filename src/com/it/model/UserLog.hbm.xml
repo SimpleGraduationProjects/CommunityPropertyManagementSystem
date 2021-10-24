@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.it.model.UserLog" table="t_UserLog">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="s_0" column="u_num" />
+		<property name="s_1" column="u_start" />
+		<property name="s_2" column="u_info" />
+		<many-to-one name="user" column="user_id" class="com.it.model.User" outer-join="false" lazy="false">
+		</many-to-one>
+	</class>
+</hibernate-mapping>

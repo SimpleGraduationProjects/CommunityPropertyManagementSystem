@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.ChurMapper">
+	<resultMap type="Chur" id="churResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="c_name" />
+		<result property="s_1" column="c_time" />
+		<result property="s_2" column="c_hao" />
+		<result property="s_3" column="c_jil" />
+		<result property="s_4" column="c_men" />
+		<result property="s_5" column="c_bz" />
+		<result property="s_6" column="f_status" />
+		<association property="user" column="user_id"  
+			select="com.it.mapper.UserMapper.selectObject"/>
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		update t_chur set f_status = 'N' where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="churResultMap">
+		SELECT t_chur.id,
+			   t_chur.c_name,
+			   t_chur.c_time,
+			   t_chur.c_hao,
+			   t_chur.c_jil,
+			   t_chur.c_men,
+			   t_chur.c_bz,
+			   t_chur.f_status,
+			   t_user.id user_id
+		  FROM t_chur, t_user
+		 WHERE t_chur.id = #{id}
+		   AND t_chur.user_id = t_user.id
+	</select>
+
+	<select id="getObjectList"  resultMap="churResultMap" parameterType="java.util.Map">
+		SELECT t_chur.id,
+			   t_chur.c_name,
+			   t_chur.c_time,
+			   t_chur.c_hao,
+			   t_chur.c_jil,
+			   t_chur.c_men,
+			   t_chur.c_bz,
+			   t_chur.f_status,
+			   t_user.id user_id
+		  FROM t_chur, t_user
+		 WHERE 1 = 1 AND t_chur.f_status = 'Y'
+		   AND t_chur.user_id = t_user.id
+		<if test="field == 't_user.s_2'">
+			and t_user.u_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_0'">
+			and t_chur.c_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_chur.c_time like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_2'">
+			and t_chur.c_hao like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_3'">
+			and t_chur.c_jil like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_4'">
+			and t_chur.c_men like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_5'">
+			and t_chur.c_bz like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="Chur">
+		INSERT INTO t_chur(c_name, c_time, c_hao, c_jil, c_men, c_bz, f_status, user_id )
+				VALUES(#{s_0}, #{s_1}, #{s_2}, #{s_3}, #{s_4}, #{s_5}, 'Y', #{user.id})
+	</insert>
+
+	<update id="updateObject" parameterType="Chur">
+		UPDATE t_chur set c_name=#{s_0}, c_time=#{s_1}, c_hao=#{s_2}, c_jil=#{s_3}, c_men=#{s_4}, c_bz=#{s_5}, user_id =#{user.id} 
+				where id=#{id}
+	</update>
+
+</mapper>
+

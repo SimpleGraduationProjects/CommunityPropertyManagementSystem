@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.ZhuFangMapper">
+	<resultMap type="ZhuFang" id="zhuFangResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="z_name" />
+		<result property="s_1" column="z_time" />
+		<result property="s_2" column="z_type" />
+		<result property="s_3" column="z_lydy" />
+		<result property="s_4" column="z_fang" />
+		<result property="s_5" column="z_xing" />
+		<result property="s_6" column="z_chao" />
+		<result property="s_7" column="z_jian" />
+		<result property="s_8" column="z_jies" />
+		<result property="s_9" column="z_bz" />
+		<result property="s_10" column="f_status" />
+		<association property="user" column="user_id"  
+			select="com.it.mapper.UserMapper.selectObject"/>
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		update t_zhuFang set f_status = 'N' where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="zhuFangResultMap">
+		SELECT t_zhuFang.id,
+			   t_zhuFang.z_name,
+			   t_zhuFang.z_time,
+			   t_zhuFang.z_type,
+			   t_zhuFang.z_lydy,
+			   t_zhuFang.z_fang,
+			   t_zhuFang.z_xing,
+			   t_zhuFang.z_chao,
+			   t_zhuFang.z_jian,
+			   t_zhuFang.z_jies,
+			   t_zhuFang.z_bz,
+			   t_zhuFang.f_status,
+			   t_user.id user_id
+		  FROM t_zhuFang, t_user
+		 WHERE t_zhuFang.id = #{id}
+		   AND t_zhuFang.user_id = t_user.id
+	</select>
+
+	<select id="getObjectList"  resultMap="zhuFangResultMap" parameterType="java.util.Map">
+		SELECT t_zhuFang.id,
+			   t_zhuFang.z_name,
+			   t_zhuFang.z_time,
+			   t_zhuFang.z_type,
+			   t_zhuFang.z_lydy,
+			   t_zhuFang.z_fang,
+			   t_zhuFang.z_xing,
+			   t_zhuFang.z_chao,
+			   t_zhuFang.z_jian,
+			   t_zhuFang.z_jies,
+			   t_zhuFang.z_bz,
+			   t_zhuFang.f_status,
+			   t_user.id user_id
+		  FROM t_zhuFang, t_user
+		 WHERE 1 = 1 AND t_zhuFang.f_status = 'Y'
+		   AND t_zhuFang.user_id = t_user.id
+		<if test="field == 't_user.s_2'">
+			and t_user.u_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_0'">
+			and t_zhuFang.z_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_zhuFang.z_time like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_2'">
+			and t_zhuFang.z_type like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_3'">
+			and t_zhuFang.z_lydy like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_4'">
+			and t_zhuFang.z_fang like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_5'">
+			and t_zhuFang.z_xing like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_6'">
+			and t_zhuFang.z_chao like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_7'">
+			and t_zhuFang.z_jian like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_8'">
+			and t_zhuFang.z_jies like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_9'">
+			and t_zhuFang.z_bz like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="ZhuFang">
+		INSERT INTO t_zhuFang(z_name, z_time, z_type, z_lydy, z_fang, z_xing, z_chao, z_jian, z_jies, z_bz, f_status, user_id )
+				VALUES(#{s_0}, #{s_1}, #{s_2}, #{s_3}, #{s_4}, #{s_5}, #{s_6}, #{s_7}, #{s_8}, #{s_9}, 'Y', #{user.id})
+	</insert>
+
+	<update id="updateObject" parameterType="ZhuFang">
+		UPDATE t_zhuFang set z_name=#{s_0}, z_time=#{s_1}, z_type=#{s_2}, z_lydy=#{s_3}, z_fang=#{s_4}, z_xing=#{s_5}, z_chao=#{s_6}, z_jian=#{s_7}, z_jies=#{s_8}, z_bz=#{s_9}, user_id =#{user.id} 
+				where id=#{id}
+	</update>
+
+</mapper>
+

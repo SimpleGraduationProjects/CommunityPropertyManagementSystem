@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.it.model.Kuaidi" table="t_Kuaidi">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="s_0" column="k_gongs" />
+		<property name="s_1" column="k_danh" />
+		<property name="s_2" column="k_ren" />
+		<property name="s_3" column="k_phon" />
+		<property name="s_4" column="k_diz" />
+		<property name="s_5" column="k_state" />
+		<property name="s_6" column="k_bz" />
+		<property name="s_7" column="f_status" />
+	</class>
+</hibernate-mapping>

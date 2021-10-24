@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.TouSuMapper">
+	<resultMap type="TouSu" id="touSuResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="t_name" />
+		<result property="s_1" column="t_time" />
+		<result property="s_2" column="t_type" />
+		<result property="s_3" column="t_neir" />
+		<result property="s_4" column="t_tssm" />
+		<result property="s_5" column="t_tsjy" />
+		<result property="s_6" column="t_stat" />
+		<result property="s_7" column="t_bz" />
+		<result property="s_8" column="f_status" />
+		<association property="user" column="user_id"  
+			select="com.it.mapper.UserMapper.selectObject"/>
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		update t_touSu set f_status = 'N' where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="touSuResultMap">
+		SELECT t_touSu.id,
+			   t_touSu.t_name,
+			   t_touSu.t_time,
+			   t_touSu.t_type,
+			   t_touSu.t_neir,
+			   t_touSu.t_tssm,
+			   t_touSu.t_tsjy,
+			   t_touSu.t_stat,
+			   t_touSu.t_bz,
+			   t_touSu.f_status,
+			   t_user.id user_id
+		  FROM t_touSu, t_user
+		 WHERE t_touSu.id = #{id}
+		   AND t_touSu.user_id = t_user.id
+	</select>
+
+	<select id="getObjectList"  resultMap="touSuResultMap" parameterType="java.util.Map">
+		SELECT t_touSu.id,
+			   t_touSu.t_name,
+			   t_touSu.t_time,
+			   t_touSu.t_type,
+			   t_touSu.t_neir,
+			   t_touSu.t_tssm,
+			   t_touSu.t_tsjy,
+			   t_touSu.t_stat,
+			   t_touSu.t_bz,
+			   t_touSu.f_status,
+			   t_user.id user_id
+		  FROM t_touSu, t_user
+		 WHERE 1 = 1 AND t_touSu.f_status = 'Y'
+		   AND t_touSu.user_id = t_user.id
+		<if test="field == 't_user.s_2'">
+			and t_user.u_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_0'">
+			and t_touSu.t_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_touSu.t_time like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_2'">
+			and t_touSu.t_type like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_3'">
+			and t_touSu.t_neir like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_4'">
+			and t_touSu.t_tssm like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_5'">
+			and t_touSu.t_tsjy like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_6'">
+			and t_touSu.t_stat like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_7'">
+			and t_touSu.t_bz like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="TouSu">
+		INSERT INTO t_touSu(t_name, t_time, t_type, t_neir, t_tssm, t_tsjy, t_stat, t_bz, f_status, user_id )
+				VALUES(#{s_0}, #{s_1}, #{s_2}, #{s_3}, #{s_4}, #{s_5}, #{s_6}, #{s_7}, 'Y', #{user.id})
+	</insert>
+
+	<update id="updateObject" parameterType="TouSu">
+		UPDATE t_touSu set t_name=#{s_0}, t_time=#{s_1}, t_type=#{s_2}, t_neir=#{s_3}, t_tssm=#{s_4}, t_tsjy=#{s_5}, t_stat=#{s_6}, t_bz=#{s_7}, user_id =#{user.id} 
+				where id=#{id}
+	</update>
+
+</mapper>
+

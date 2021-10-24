@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.CheWeiMapper">
+	<resultMap type="CheWei" id="cheWeiResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="c_name" />
+		<result property="s_1" column="c_time" />
+		<result property="s_2" column="c_type" />
+		<result property="s_3" column="c_addr" />
+		<result property="s_4" column="c_jies" />
+		<result property="s_5" column="c_bz" />
+		<result property="s_6" column="f_status" />
+		<association property="user" column="user_id"  
+			select="com.it.mapper.UserMapper.selectObject"/>
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		update t_cheWei set f_status = 'N' where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="cheWeiResultMap">
+		SELECT t_cheWei.id,
+			   t_cheWei.c_name,
+			   t_cheWei.c_time,
+			   t_cheWei.c_type,
+			   t_cheWei.c_addr,
+			   t_cheWei.c_jies,
+			   t_cheWei.c_bz,
+			   t_cheWei.f_status,
+			   t_user.id user_id
+		  FROM t_cheWei, t_user
+		 WHERE t_cheWei.id = #{id}
+		   AND t_cheWei.user_id = t_user.id
+	</select>
+
+	<select id="getObjectList"  resultMap="cheWeiResultMap" parameterType="java.util.Map">
+		SELECT t_cheWei.id,
+			   t_cheWei.c_name,
+			   t_cheWei.c_time,
+			   t_cheWei.c_type,
+			   t_cheWei.c_addr,
+			   t_cheWei.c_jies,
+			   t_cheWei.c_bz,
+			   t_cheWei.f_status,
+			   t_user.id user_id
+		  FROM t_cheWei, t_user
+		 WHERE 1 = 1 AND t_cheWei.f_status = 'Y'
+		   AND t_cheWei.user_id = t_user.id
+		<if test="field == 't_user.s_2'">
+			and t_user.u_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_0'">
+			and t_cheWei.c_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_cheWei.c_time like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_2'">
+			and t_cheWei.c_type like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_3'">
+			and t_cheWei.c_addr like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_4'">
+			and t_cheWei.c_jies like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_5'">
+			and t_cheWei.c_bz like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="CheWei">
+		INSERT INTO t_cheWei(c_name, c_time, c_type, c_addr, c_jies, c_bz, f_status, user_id )
+				VALUES(#{s_0}, #{s_1}, #{s_2}, #{s_3}, #{s_4}, #{s_5}, 'Y', #{user.id})
+	</insert>
+
+	<update id="updateObject" parameterType="CheWei">
+		UPDATE t_cheWei set c_name=#{s_0}, c_time=#{s_1}, c_type=#{s_2}, c_addr=#{s_3}, c_jies=#{s_4}, c_bz=#{s_5}, user_id =#{user.id} 
+				where id=#{id}
+	</update>
+
+</mapper>
+

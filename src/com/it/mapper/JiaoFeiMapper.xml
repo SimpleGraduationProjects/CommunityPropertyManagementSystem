@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.JiaoFeiMapper">
+	<resultMap type="JiaoFei" id="jiaoFeiResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="j_name" />
+		<result property="s_1" column="j_time" />
+		<result property="s_2" column="j_type" />
+		<result property="s_3" column="j_fang" />
+		<result property="s_4" column="j_jfyy" />
+		<result property="s_5" column="j_jine" />
+		<result property="s_6" column="j_stat" />
+		<result property="s_7" column="j_bz" />
+		<result property="s_8" column="f_status" />
+		<association property="user" column="user_id"  
+			select="com.it.mapper.UserMapper.selectObject"/>
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		update t_jiaoFei set f_status = 'N' where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="jiaoFeiResultMap">
+		SELECT t_jiaoFei.id,
+			   t_jiaoFei.j_name,
+			   t_jiaoFei.j_time,
+			   t_jiaoFei.j_type,
+			   t_jiaoFei.j_fang,
+			   t_jiaoFei.j_jfyy,
+			   t_jiaoFei.j_jine,
+			   t_jiaoFei.j_stat,
+			   t_jiaoFei.j_bz,
+			   t_jiaoFei.f_status,
+			   t_user.id user_id
+		  FROM t_jiaoFei, t_user
+		 WHERE t_jiaoFei.id = #{id}
+		   AND t_jiaoFei.user_id = t_user.id
+	</select>
+
+	<select id="getObjectList"  resultMap="jiaoFeiResultMap" parameterType="java.util.Map">
+		SELECT t_jiaoFei.id,
+			   t_jiaoFei.j_name,
+			   t_jiaoFei.j_time,
+			   t_jiaoFei.j_type,
+			   t_jiaoFei.j_fang,
+			   t_jiaoFei.j_jfyy,
+			   t_jiaoFei.j_jine,
+			   t_jiaoFei.j_stat,
+			   t_jiaoFei.j_bz,
+			   t_jiaoFei.f_status,
+			   t_user.id user_id
+		  FROM t_jiaoFei, t_user
+		 WHERE 1 = 1 AND t_jiaoFei.f_status = 'Y'
+		   AND t_jiaoFei.user_id = t_user.id
+		<if test="field == 't_user.s_2'">
+			and t_user.u_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_0'">
+			and t_jiaoFei.j_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_jiaoFei.j_time like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_2'">
+			and t_jiaoFei.j_type like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_3'">
+			and t_jiaoFei.j_fang like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_4'">
+			and t_jiaoFei.j_jfyy like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_5'">
+			and t_jiaoFei.j_jine like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_6'">
+			and t_jiaoFei.j_stat like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_7'">
+			and t_jiaoFei.j_bz like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="JiaoFei">
+		INSERT INTO t_jiaoFei(j_name, j_time, j_type, j_fang, j_jfyy, j_jine, j_stat, j_bz, f_status, user_id )
+				VALUES(#{s_0}, #{s_1}, #{s_2}, #{s_3}, #{s_4}, #{s_5}, #{s_6}, #{s_7}, 'Y', #{user.id})
+	</insert>
+
+	<update id="updateObject" parameterType="JiaoFei">
+		UPDATE t_jiaoFei set j_name=#{s_0}, j_time=#{s_1}, j_type=#{s_2}, j_fang=#{s_3}, j_jfyy=#{s_4}, j_jine=#{s_5}, j_stat=#{s_6}, j_bz=#{s_7}, user_id =#{user.id} 
+				where id=#{id}
+	</update>
+
+</mapper>
+

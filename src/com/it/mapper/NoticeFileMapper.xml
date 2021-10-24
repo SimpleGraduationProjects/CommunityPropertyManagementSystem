@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.NoticeFileMapper">
+	<resultMap type="NoticeFile" id="noticeFileResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="f_uploadName" />
+		<result property="s_1" column="f_fileName" />
+		<result property="s_2" column="f_uploadTime" />
+		<result property="s_3" column="n_name" />
+		<result property="s_4" column="n_type" />
+		<result property="s_5" column="n_info" />
+		<result property="s_6" column="n_bz" />
+		<result property="s_7" column="f_status" />
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		update t_noticeFile set f_status = 'N' where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="noticeFileResultMap">
+		SELECT t_noticeFile.id,
+			   t_noticeFile.f_uploadName,
+			   t_noticeFile.f_fileName,
+			   t_noticeFile.f_uploadTime,
+			   t_noticeFile.n_name,
+			   t_noticeFile.n_type,
+			   t_noticeFile.n_info,
+			   t_noticeFile.n_bz,
+			   t_noticeFile.f_status
+		  FROM t_noticeFile
+		 WHERE t_noticeFile.id = #{id}
+	</select>
+
+	<select id="getObjectList"  resultMap="noticeFileResultMap" parameterType="java.util.Map">
+		SELECT t_noticeFile.id,
+			   t_noticeFile.f_uploadName,
+			   t_noticeFile.f_fileName,
+			   t_noticeFile.f_uploadTime,
+			   t_noticeFile.n_name,
+			   t_noticeFile.n_type,
+			   t_noticeFile.n_info,
+			   t_noticeFile.n_bz,
+			   t_noticeFile.f_status
+		  FROM t_noticeFile
+		 WHERE 1 = 1 AND t_noticeFile.f_status = 'Y'
+		<if test="field == 's_0'">
+			and t_noticeFile.f_uploadName like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_noticeFile.f_fileName like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_2'">
+			and t_noticeFile.f_uploadTime like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_3'">
+			and t_noticeFile.n_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_4'">
+			and t_noticeFile.n_type like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_5'">
+			and t_noticeFile.n_info like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_6'">
+			and t_noticeFile.n_bz like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="NoticeFile">
+		INSERT INTO t_noticeFile(f_uploadName, f_fileName, f_uploadTime, n_name, n_type, n_info, n_bz, f_status)
+				VALUES(#{s_0}, #{s_1}, #{s_2}, #{s_3}, #{s_4}, #{s_5}, #{s_6}, 'Y')
+	</insert>
+
+	<update id="updateObject" parameterType="NoticeFile">
+		UPDATE t_noticeFile set f_uploadName=#{s_0}, f_fileName=#{s_1}, f_uploadTime=#{s_2}, n_name=#{s_3}, n_type=#{s_4}, n_info=#{s_5}, n_bz=#{s_6}
+				where id=#{id}
+	</update>
+
+</mapper>
+

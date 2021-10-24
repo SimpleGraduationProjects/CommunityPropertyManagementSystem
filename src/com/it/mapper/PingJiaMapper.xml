@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.PingJiaMapper">
+	<resultMap type="PingJia" id="pingJiaResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="p_name" />
+		<result property="s_1" column="p_time" />
+		<result property="s_2" column="p_type" />
+		<result property="s_3" column="p_neir" />
+		<result property="s_4" column="p_bz" />
+		<result property="s_5" column="f_status" />
+		<association property="user" column="user_id"  
+			select="com.it.mapper.UserMapper.selectObject"/>
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		update t_pingJia set f_status = 'N' where id=#{id};
+	</delete>
+
+	<select id="selectObject" parameterType="int" resultMap="pingJiaResultMap">
+		SELECT t_pingJia.id,
+			   t_pingJia.p_name,
+			   t_pingJia.p_time,
+			   t_pingJia.p_type,
+			   t_pingJia.p_neir,
+			   t_pingJia.p_bz,
+			   t_pingJia.f_status,
+			   t_user.id user_id
+		  FROM t_pingJia, t_user
+		 WHERE t_pingJia.id = #{id}
+		   AND t_pingJia.user_id = t_user.id
+	</select>
+
+	<select id="getObjectList"  resultMap="pingJiaResultMap" parameterType="java.util.Map">
+		SELECT t_pingJia.id,
+			   t_pingJia.p_name,
+			   t_pingJia.p_time,
+			   t_pingJia.p_type,
+			   t_pingJia.p_neir,
+			   t_pingJia.p_bz,
+			   t_pingJia.f_status,
+			   t_user.id user_id
+		  FROM t_pingJia, t_user
+		 WHERE 1 = 1 AND t_pingJia.f_status = 'Y'
+		   AND t_pingJia.user_id = t_user.id
+		<if test="field == 't_user.s_2'">
+			and t_user.u_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_0'">
+			and t_pingJia.p_name like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_1'">
+			and t_pingJia.p_time like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_2'">
+			and t_pingJia.p_type like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_3'">
+			and t_pingJia.p_neir like '%${fieldValue}%'
+		</if>
+		<if test="field == 's_4'">
+			and t_pingJia.p_bz like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="PingJia">
+		INSERT INTO t_pingJia(p_name, p_time, p_type, p_neir, p_bz, f_status, user_id )
+				VALUES(#{s_0}, #{s_1}, #{s_2}, #{s_3}, #{s_4}, 'Y', #{user.id})
+	</insert>
+
+	<update id="updateObject" parameterType="PingJia">
+		UPDATE t_pingJia set p_name=#{s_0}, p_time=#{s_1}, p_type=#{s_2}, p_neir=#{s_3}, p_bz=#{s_4}, user_id =#{user.id} 
+				where id=#{id}
+	</update>
+
+</mapper>
+

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.UserMapper">
+	<resultMap type="User" id="userResultMap">
+		<id property="id" column="id" />
+		<result property="s_0" column="u_username" />
+		<result property="s_1" column="u_password" />
+		<result property="s_2" column="u_name" />
+		<result property="s_3" column="u_birthday" />
+		<result property="s_4" column="u_sex" />
+		<result property="s_5" column="u_tel" />
+		<result property="s_6" column="u_lxr" />
+		<result property="s_7" column="u_phone" />
+		<result property="s_8" column="u_jg" />
+		<result property="s_9" column="u_address" />
+		<result property="s_10" column="u_bm" />
+		<result property="s_11" column="u_type" />
+		<result property="s_12" column="u_by_1" />
+		<result property="s_13" column="u_by_2" />
+		<result property="s_14" column="u_by_3" />
+		<result property="s_15" column="u_bz" />
+		<result property="s_16" column="u_status" />
+	</resultMap>
+
+	<delete id="deleteObject" parameterType="int">
+		update t_user set u_status = 'N' where id=#{id};
+	</delete>
+	
+	<select id="getObjectByName" parameterType="User" resultMap="userResultMap">
+		SELECT
+			 t_user.id
+			,t_user.u_username
+			,t_user.u_password
+			,t_user.u_name
+			,t_user.u_birthday
+			,t_user.u_sex
+			,t_user.u_tel
+			,t_user.u_lxr
+			,t_user.u_phone
+			,t_user.u_jg
+			,t_user.u_address
+			,t_user.u_bm
+			,t_user.u_type
+			,t_user.u_by_1
+			,t_user.u_by_2
+			,t_user.u_by_3
+			,t_user.u_bz
+			,t_user.u_status
+		FROM t_user
+		WHERE t_user.u_username=#{s_0} 
+	</select>
+
+	<select id="selectObject" parameterType="int" resultMap="userResultMap">
+		SELECT
+			 t_user.id
+			,t_user.u_username
+			,t_user.u_password
+			,t_user.u_name
+			,t_user.u_birthday
+			,t_user.u_sex
+			,t_user.u_tel
+			,t_user.u_lxr
+			,t_user.u_phone
+			,t_user.u_jg
+			,t_user.u_address
+			,t_user.u_bm
+			,t_user.u_type
+			,t_user.u_by_1
+			,t_user.u_by_2
+			,t_user.u_by_3
+			,t_user.u_bz
+			,t_user.u_status
+		FROM t_user
+		WHERE t_user.id=#{id}
+	</select>
+
+	<select id="getObjectList"  resultMap="userResultMap" parameterType="java.util.Map">
+		SELECT
+			  t_user.id,
+			  t_user.u_username,
+			  t_user.u_password,
+			  t_user.u_name,
+			  t_user.u_birthday,
+			  t_user.u_sex,
+			  t_user.u_tel,
+			  t_user.u_lxr,
+			  t_user.u_phone,
+			  t_user.u_jg,
+			  t_user.u_address,
+			  t_user.u_bm,
+			  t_user.u_type,
+			  t_user.u_by_1,
+			  t_user.u_by_2,
+			  t_user.u_by_3,
+			  t_user.u_bz,
+			  t_user.u_status
+		 FROM t_user
+	    WHERE 1 = 1  AND u_status = 'Y'
+	    <if test="field == 's_0'">
+			and u_username like '%${fieldValue}%'
+		</if>
+	    <if test="field == 's_2'">
+			and u_name like '%${fieldValue}%'
+		</if>
+	    <if test="field == 's_3'">
+			and u_birthday like '%${fieldValue}%'
+		</if>
+	    <if test="field == 's_4'">
+			and u_sex like '%${fieldValue}%'
+		</if>
+	    <if test="field == 's_5'">
+			and u_tel like '%${fieldValue}%'
+		</if>	 
+	    <if test="field == 's_6'">
+			and u_lxr like '%${fieldValue}%'
+		</if>
+	</select>
+
+	<insert id="insertObject" parameterType="User">
+		INSERT INTO t_user(u_username, u_password, u_name, u_birthday, u_sex, u_tel, u_lxr, u_phone, u_jg, u_address, u_bm, u_type, u_by_1, u_by_2, u_by_3, u_bz, u_status)
+				VALUES(#{s_0}, #{s_1}, #{s_2}, #{s_3}, #{s_4}, #{s_5}, #{s_6}, #{s_7}, #{s_8}, #{s_9}, #{s_10}, #{s_11}, #{s_12}, #{s_13}, #{s_14}, #{s_15}, 'Y')
+	</insert>
+
+	<update id="updateObject" parameterType="User">
+		update  t_user set u_username=#{s_0}, u_password=#{s_1}, u_name=#{s_2}, u_birthday=#{s_3}, u_sex=#{s_4}, u_tel=#{s_5}, u_lxr=#{s_6}, u_phone=#{s_7}, u_jg=#{s_8}, u_address=#{s_9}, u_bm=#{s_10}, u_type=#{s_11}, u_by_1=#{s_12}, u_by_2=#{s_13}, u_by_3=#{s_14}, u_bz=#{s_15}
+				where id=#{id}
+	</update>
+
+</mapper>
