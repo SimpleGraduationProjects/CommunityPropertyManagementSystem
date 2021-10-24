@@ -1,0 +1,722 @@
+/* #header start */
+body{
+	min-width: 1000px;
+}
+.header {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.logo {
+    width: 267px;
+    height: 77px;
+    padding-top: 24px;
+    margin-left: 2px
+}
+
+.call {
+    height: 42px;
+    line-height: 46px;
+    padding-left: 44px;
+    background: url(../images/qhy_2.png) no-repeat -263px 0;
+    color: #21b0f2;
+    font-size: 24px;
+    font-style: oblique;
+    position: absolute;
+    top: 17px;
+    right: 6px
+}
+
+.searchs {
+    width: 263px;
+    height: 31px;
+    overflow: hidden;
+    background: url(../images/qhy_2.png) no-repeat 0 0;
+    position: absolute;
+    top: 69px;
+    right: 0
+}
+
+.searchs_a {
+    width: 170px;
+    height: 14px;
+    line-height: 14px;
+    padding: 8px 0;
+    padding-left: 22px;
+    border: 0;
+    background: none;
+    color: #999
+}
+
+.searchs_b {
+    width: 63px;
+    height: 31px;
+    border: 0;
+    overflow: hidden;
+    font-size: 0;
+    text-indent: 123px;
+    cursor: pointer;
+    background: url(../images/qhy_2.png) no-repeat -200px 0;
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
+.searchs_bs {
+    background: url(../images/qhy_2.png) no-repeat -200px -31px
+}
+/*header end*/
+/*indexline*/
+
+.indexline {
+    background: url(../images/line.png) repeat-x;
+    height: 9px;
+}
+/*indexline end*/
+/*content*/
+
+.indext-content {
+    margin-top: 40px;
+}
+
+.index-left {
+    width: 500px;
+    text-align: center;
+}
+.index-right {
+    width: 493px;
+}
+/*index-land*/
+
+.index-land {
+    border: 1px solid #d2d2d2;
+    border-top: 3px solid #41a9f0;
+    width: 400px;
+    margin-bottom: 125px;
+    margin-left: 70px;
+    margin-top: 80px;
+}
+
+.index-land h3 {
+    font-size: 26px;
+    text-align: center;
+    color: #41a9f0;
+    margin: 30px 0 20px;
+}
+/*==========以下部分是Validform必须的===========*/
+
+.Validform_checktip {
+    margin-left: 8px;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    color: #999;
+    font-size: 12px;
+}
+
+.Validform_right {
+    color: #71b83d;
+    padding-left: 20px;
+    background: url(../images/right.png) no-repeat left center;
+}
+
+.Validform_wrong {
+    color: red;
+    padding-left: 20px;
+    white-space: nowrap;
+    background: url(../images/error.png) no-repeat left center;
+}
+
+.Validform_loading {
+    padding-left: 20px;
+    background: url(../images/onLoad.gif) no-repeat left center;
+}
+
+.Validform_error {
+    background-color: #ffe7e7;
+}
+
+#Validform_msg {
+    color: #7d8289;
+    font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif;
+    width: 280px;
+    -webkit-box-shadow: 2px 2px 3px #aaa;
+    -moz-box-shadow: 2px 2px 3px #aaa;
+    background: #fff;
+    position: absolute;
+    top: 0px;
+    right: 50px;
+    z-index: 99999;
+    display: none;
+    filter: progid: DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999');
+}
+
+#Validform_msg .iframe {
+    position: absolute;
+    left: 0px;
+    top: -1px;
+    z-index: -1;
+}
+
+#Validform_msg .Validform_title {
+    line-height: 25px;
+    height: 25px;
+    text-align: left;
+    font-weight: bold;
+    padding: 0 8px;
+    color: #fff;
+    position: relative;
+    background-color: #000;
+}
+
+#Validform_msg a.Validform_close:link,
+#Validform_msg a.Validform_close:visited {
+    line-height: 22px;
+    position: absolute;
+    right: 8px;
+    top: 0px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#Validform_msg a.Validform_close:hover {
+    color: #cc0;
+}
+
+#Validform_msg .Validform_info {
+    padding: 8px;
+    border: 1px solid #000;
+    border-top: none;
+    text-align: left;
+}
+/*以下部分是Validform必须的 end*/
+
+.registerform {
+    margin: 0 27px 15px;
+    padding-top: 15px;
+}
+
+.registerform td {
+    padding: 5px 0;
+    vertical-align: top;
+    text-align: left;
+}
+
+.registerform .fleft {
+    width: 70px;
+    font-size: 16px;
+    color: #444;
+    text-align: right;
+}
+
+.registerform .inputxt {
+    border: 1px solid #a5aeb6;
+    width: 260px;
+    width: 245px\9;
+    padding: 5px 2px;
+}
+
+.registerform .inputxta {
+    border: 1px solid #a5aeb6;
+    padding: 5px 2px;
+    width: 75px;
+    float: left;
+}
+
+.yanimg img {
+    border: 1px solid #a5aeb6;
+    height: 34px;
+    height: 30px\9;
+    width: 80px;
+    float: left;
+    margin-left: 8px;
+    margin-right: 11px;
+    margin-right: 9px\9;
+}
+
+.yana {
+    color: #018ceb;
+    font-size: 10px;
+}
+
+.submita {
+    background: url(../images/sbumit.png) no-repeat;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    height: 50px;
+    text-align: center;
+    width: 126px;
+    margin-left: 25px;
+}
+
+.wjma {
+    text-align: right;
+}
+
+.wjma a {
+    color: #444;
+}
+
+.registerform td {
+    line-height: 38px;
+}
+
+.Validform_checktip {
+    margin-left: 0;
+}
+
+.info {
+    border: 1px solid #ccc;
+    padding: 2px 20px 2px 5px;
+    color: #666;
+    position: absolute;
+    display: none;
+    line-height: 20px;
+    background-color: #fff;
+}
+
+.dec {
+    bottom: -8px;
+    display: block;
+    height: 8px;
+    overflow: hidden;
+    position: absolute;
+    left: 10px;
+    width: 17px;
+}
+
+.dec s {
+    font-family: simsun;
+    font-size: 16px;
+    height: 19px;
+    left: 0;
+    line-height: 21px;
+    position: absolute;
+    text-decoration: none;
+    top: -9px;
+    width: 17px;
+}
+
+.dec .dec1 {
+    color: #ccc;
+}
+
+.dec .dec2 {
+    color: #fff;
+    top: -10px;
+}
+/*index-land end*/
+/*大学生相关信息*/
+
+.about {
+    border: 1px solid #d2d2d2;
+    margin-top: 45px;
+    border-top: 3px solid #41a9f0;
+    margin-bottom: 25px;
+}
+
+.informantionh3 h3 {
+    background: url(../images/h3bj.png) no-repeat;
+    color: #008ceb;
+    font-size: 35px;
+    height: 62px;
+    line-height: 62px;
+    margin: 45px 386px 0;
+    padding-left: 75px;
+}
+.informantionul {
+    margin: 30px 182px;
+}
+
+.informantionul ul li {
+    float: left;
+    font-size: 18px;
+    margin: 0 10px;
+    padding: 0 14px;
+}
+
+.activera {
+    color: #008ceb;
+}
+
+.informantionul ul .linea {
+    width: 1px;
+    background: #ccc;
+    padding: 0;
+    height: 24px;
+}
+
+.informantionp {
+    margin-bottom: 45px;
+}
+
+.informantionp p {
+    margin: 0 50px;
+    color: #444;
+    font-size: 14px;
+    line-height: 30px;
+}
+/*大学生相关信息 end*/
+/*输入输出*/
+.inputout {
+    border: 1px solid #d2d2d2;
+    margin: 35px 40px;
+    border-top: 3px solid #41a9f0;
+}
+.inputout h3 {
+    color: #41a9f0;
+    font-size: 26px;
+    margin: 45px 0 10px 40px;
+}
+.amonga p {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 75px;
+}
+.amonga p a {
+    color: #018ceb;
+}
+.amonga p input {
+    width: 70px;
+    border: 1px solid #d2d2d2;
+    margin: 0 10px;
+    color: #c10000;
+}
+.amonga span {
+    display: block;
+    font-size: 14px;
+    padding-left: 240px;
+    margin: 30px 0;
+}
+.amonga span a {
+    color: #c10000;
+}
+.inputsubmit {
+    margin: 50px 0 55px;
+}
+.inputsubmit a {
+    background: url(../images/inputsubmit.png) no-repeat;
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    height: 49px;
+    line-height: 49px;
+    margin: 0 auto;
+    text-align: center;
+    width: 200px;
+}
+.registerform .zcxxa {
+    text-align: right;
+    float: left;
+    width: 96px;
+}
+.registerform .zcxxa span {
+    color: #c80000;
+    margin-right: 3px;
+}
+.registerform .xiala {
+    width: 96px;
+}
+.registerform .selectwidth {
+    display: block;
+    width: 635px;
+}
+.shenfen{
+    width: 700px;
+    zoom: 1;
+    margin-left: 26px;
+}
+.shenfena{
+    float: left;
+    width: 167px;
+}
+.shenfena h4 {
+    float: left;
+    margin-left: 15px;
+    text-align: right;
+    margin-right: 3px;
+}
+.shenfena h4 span{
+	color: #c80000;
+	margin-right: 3px;
+}
+.shenfenb{
+   width: 290px;
+}
+/* select */
+.select {
+    position: relative;
+    float: left;
+    width: 96px;
+}
+.select h3 {
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    border: 1px solid #d2ccc4;
+    background: #fcfcfb url(../images/zcxx.png) no-repeat 76px 10px;    
+    cursor: pointer;
+    width: 91px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    z-index: 99;
+    padding-left: 5px;
+    margin: 6px 0 0;
+}
+.select h3:hover,
+.select h3.cur {
+    border: 1px solid #409DFE;
+    box-shadow: 0 0 3px #409DFE;
+}
+.select .setexta{
+	border: 1px solid #d2ccc4;
+}
+.select .setexta,.select .setexta input{
+	width: 200px;
+	padding: 0;
+}
+.select .setexta input{
+	border: none;
+}
+.select .selecta {
+    position: absolute;
+    left: 0;
+    top: 29px;
+    border: 1px solid #d2ccc4;
+    background: #fff;
+    display: none;
+}
+
+.select .selecta ul {
+    padding: 4px 0;
+    width: 96px;
+    max-height: 250px;
+    overflow: auto;
+}
+
+.select .selecta ul li a {
+    line-height: 28px;
+    display: block;
+    padding: 0 8px;
+}
+
+.select .selecta ul li a:hover {
+    background: #f5f5f5;
+}
+.pr1{
+	margin-left: 15px;
+}
+.pr2{
+	margin-left: 65px;
+}
+.regisspan span{
+	display: block;
+    margin:37px 176px 0;
+}
+.regisspan span i{
+	color: #c80000;
+}
+/*输入输出 end*/
+/*学院筛选*/
+.apply{
+	 margin: 45px 265px;
+}
+.apply ul li {
+	clear: both;
+	zoom: 1;
+    height: 30px;
+    line-height: 37px;
+    margin: 5px 0;
+    padding: 5px 0;
+}
+.apply ul li span{
+	width: 80px;
+	text-align: right;
+	float: left;
+}
+.apply ul li .daxue{
+	width: 260px;
+	border: 1px solid #d2d2d2;
+}
+.labela{
+	margin-right: 40px;
+	margin-right: 30px\9;
+}
+.dxcc{
+   margin-right: 15px;
+}
+/*筛选大学*/
+.recommend{
+	margin: 45px 15px 0;
+}
+.recoform td{
+	 border: 1px solid #d2d2d2;
+	 text-align: center;
+}
+.recotitle td{
+	line-height: 15px;
+}
+.xuhao{
+    padding: 15px 9px;
+    width: 7%;
+}
+.gouxuan{
+    padding: 15px 10px;
+    width: 6%;
+}
+.shihe{
+	width: 20%;
+}
+.fengjian{
+	padding: 15px 10px;
+    width: 6%;
+}
+.zzjhrs{
+	padding: 15px 3px;
+    width: 9%;
+}
+.lsjd,.zdpm,.lnzd{
+	 padding: 15px 5px;
+    width: 10%;
+}
+.cb{
+    background-image: url(../images/round.png);
+}
+.cb {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    background-position: 0 0;
+    cursor: pointer;
+     margin-left: 2px;
+    margin-top: 6px;
+}
+.cb_active {
+    background-position: 27px -87px;
+}
+.recocontent td{
+	padding: 5px 0;
+}
+.fjbj{
+	background: url(../images/fjbj.png) no-repeat center 15px; 
+	width: 22px;
+	height: 22px;
+}
+/*分页*/
+.page{
+    height: 37px;
+    line-height: 37px;
+    padding: 10px 0;
+    position: relative;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+.page ul{
+	position: absolute;
+	right: 13px;
+}
+.page ul li{
+	background: url(../images/pagebj.png) no-repeat;
+    height: 37px;
+    width: 37px;
+    display: block;
+    float: left;
+}
+.page ul .pagleft{
+	background: url(../images/pageleft.png) no-repeat;
+	height: 37px;
+    width: 37px;
+}
+.page ul .pageright{
+    background: url(../images/pageright.png) no-repeat;
+	height: 37px;
+    width: 37px;
+}
+.pagehover{
+	background: url(../images/pagehove.png) no-repeat;
+	display: block;
+	height: 37px;
+	width: 37px;
+}
+/*筛选大学 end*/
+/*学院筛选 end*/
+/*content end*/
+/* #footer start */
+
+.footer {
+    background: #006bb3 url(../images/qhy_7.png) repeat-x 0 -25px;
+    margin-top: 20px;
+    color: #fff
+}
+
+.footer_con p {
+    margin: 0;
+}
+
+.footer i {
+    display: block;
+    height: 25px;
+    overflow: hidden;
+    background: url(../images/qhy_7.png) no-repeat center top
+}
+
+.footer_con {
+    min-height: 167px;
+    _height: 167px;
+    background: url(../images/qhy_8.png) no-repeat center;
+    padding-bottom: 12px
+}
+
+.footer_a {
+    float: left;
+    width: 306px;
+    overflow: hidden
+}
+
+.footer_att {
+    font-size: 18px;
+    padding: 11px 0 18px;
+    font-weight: bold;
+}
+
+.footer_b {
+    float: left;
+    width: 366px;
+    text-align: center;
+    background: url(../images/qhy_9.png) no-repeat center 22px;
+    padding-top: 108px
+}
+
+.footer_b a {
+    color: #fff;
+    margin: 0 6px
+}
+
+.footer_c {
+    float: right;
+    width: 304px;
+    min-height: 176px;
+    _height: 176px;
+    background: url(../images/qhy_10.png) no-repeat left bottom
+}
+
+.footer_c div {
+    margin-top: 100px;
+    margin-left: 170px
+}
+
+.footer_c_wx {
+    height: 26px;
+    line-height: 26px;
+    background: url(../images/qhy_11.png) no-repeat;
+    padding-left: 29px
+}
+/*footer end*/

@@ -1,0 +1,318 @@
+@charset "utf-8";
+/* CSS Document */
+&nbsp;/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+
+html {
+	color: #696969;
+	background: #262626;
+	-webkit-text-size-adjust: 100%;/*chrome字体问题*/
+	-ms-text-size-adjust: 100%;
+	font-size: 100%;
+}
+/*IE6对positon:fixed的单独处理修正IE6滚动抖动的bug*/
+*html,*html body{
+	background-image:url(about:blank);/*修正IE6滚动抖动的bug*/
+	background-attachment: fixed;/*根据自己实际，非必需*/  
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+}
+.warrp{
+	width: 100%;
+	margin: 0 auto;
+}
+/* 要注意表单元素并不继承父级 font 的问题 */
+
+body, button, input, select, textarea {
+	font-family: "微软雅黑","Microsoft YaHei";
+	font-size:14px;
+	line-height:24px;
+	color: #444;
+	outline: none;
+}
+input, select, textarea {
+	font-size: 100%;
+	padding-left:10px;
+
+}
+/* 去掉各Table cell 的边距并让其边重合 */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* IE bug fixed: th 不继承 text-align*/
+th {
+	text-align: inherit;
+}
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption, th {
+	text-align: left;
+}
+
+/* 去除默认边框 */
+fieldset, img {
+	border: none;
+	outline: none;
+	-moz-outline:none;
+}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+	display: block;
+}
+/* 去掉列表前的标识, li 会继承 */
+ol, ul, li {
+	list-style: none;
+}
+/* 一致的 del 样式 */
+del {
+	text-decoration: line-through;
+}
+/* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: 500;
+}
+/* 统一上标和下标 */
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+/* 默认不显示下划线，保持页面简洁 */
+
+ins, a {
+	text-decoration: none;
+}
+/* 让链接在 hover 状态下显示下划线 */
+a {
+	color: #444;
+	cursor: pointer;
+	outline: none;
+	outline: none;
+	blr:expression(this.onFocus=this.blur());
+}
+a:hover {
+	text-decoration: none;
+	color: #333333;
+}
+ul li a{
+	color: #444;
+}
+/* 清理浮动 */
+.clearFloat:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.clearFloat {
+	zoom: 1; /* for IE6 IE7 */
+}
+/* 设置内联, 减少浮动带来的bug */
+.floatLeft {
+	float: left;
+}
+.floatRight {
+	float: right;
+}
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+/* HTML5 媒体文件跟 img 保持一致 */
+audio, canvas, video {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+/*设置图片视频等自适应*/
+
+img{
+	max-width: 100%;
+
+}
+/*.video embed, .video object, .video iframe{
+	width: 100%;
+	height: auto;
+}*/
+/*设置图片视频等自适应 end*/
+
+/* 去掉 firefox 下此元素的边框 */
+abbr, acronym {
+	border: 0;
+	font-variant: normal;
+}
+address, caption, cite, code, dfn, em, th, var {
+	font-style: normal;
+	font-weight: 500;
+}
+.none {
+    display: none;
+}
+/*框架css自带样式的重置*/
+.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
+    color: #ccc;
+    font-weight:400;
+	text-shadow:none;
+}
+/*重置所有的问题阴影属性*/
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+    text-shadow:none;
+}
+/*设置ul的margin为0*/
+.ui-content .ui-listview-inset, .ui-panel-inner > .ui-listview-inset {
+    margin: 0;
+}
+.ui-shadow {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+/*解决盒模型问题css3属性也可用来统一FORM元素风格*/
+.box-sizing {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+/*topline*/
+.topline{
+	border-top: 4px solid #ff8f00;
+}
+/*文字排版*/
+.f12{font-size:12px}
+.f13{font-size:13px}
+.f14{font-size:14px}
+.f16{font-size:16px}
+.f20{font-size:20px}
+.fb{font-weight:bold}
+.fn{font-weight:normal}
+.t2{text-indent:2em}
+/*定位*/
+.tl{text-align:left}
+.tc{text-align:center}
+.tr{text-align:right}
+/*宽*/
+.w1000{
+	width: 1000px;
+	margin: 0 auto;
+}
+.w1200{
+	width: 1200px;
+	margin: 0 auto;
+}
+/*边距*/
+.m10{margin:10px}
+.m15{margin:15px}
+.m30{margin:30px}
+.mtb10{margin: 10px 0}
+.mtb15{margin: 15px 0}
+.mtb20{margin: 20px 0}
+.mtb30{margin: 30px 0}
+.mtb50{margin: 50px 0}
+.mlr10{margin: 0 10px}
+.mlr15{margin: 0 15px}
+.mlr20{margin: 0 20px}
+.mlr30{margin: 0 30px}
+.mlr50{margin: 0 50px}
+.mt5{margin-top:5px}
+.mt10{margin-top:10px}
+.mt15{margin-top:15px}
+.mt20{margin-top:20px}
+.mt30{margin-top:30px}
+.mt50{margin-top:50px}
+.mt100{margin-top:100px}
+.mb5{margin-bottom:5px}
+.mb10{margin-bottom:10px}
+.mb15{margin-bottom:15px}
+.mb20{margin-bottom:20px}
+.mb30{margin-bottom:30px}
+.mb50{margin-bottom:50px}
+.mb100{margin-bottom:100px}
+.ml5{margin-left:5px}
+.ml10{margin-left:10px}
+.ml15{margin-left:15px}
+.ml20{margin-left:20px}
+.ml30{margin-left:30px}
+.ml50{margin-left:50px}
+.ml100{margin-left:100px}
+.mr15{margin-right:5px}
+.mr20{margin-right:20px}
+.mr30{margin-right:30px}
+.mr50{margin-right:50px}
+.mr100{margin-right:100px}
+.p10{padding:10px;}
+.p15{padding:15px;}
+.p30{padding:30px;}
+.ptb10{padding: 10px 0}
+.ptb15{padding: 15px 0}
+.ptb20{padding: 20px 0}
+.ptb30{padding: 30px 0}
+.ptb50{padding: 50px 0}
+.plr10{padding: 0 10px}
+.plr15{padding: 0 15px}
+.plr20{padding: 0 20px}
+.plr30{padding: 0 30px}
+.plr50{padding: 0 50px}
+.pt5{padding-top:5px}
+.pt10{padding-top:10px}
+.pt15{padding-top:15px}
+.pt20{padding-top:20px}
+.pt30{padding-top:30px}
+.pt50{padding-top:50px}
+.pb5{padding-bottom:5px}
+.pb10{padding-bottom:10px}
+.pb15{padding-bottom:15px}
+.pb20{padding-bottom:20px}
+.pb30{padding-bottom:30px}
+.pb50{padding-bottom:50px}
+.pb100{padding-bottom:100px}
+.pl5{padding-left:5px}
+.pl10{padding-left:10px}
+.pl15{padding-left:15px}
+.pl20{padding-left:20px}
+.pl30{padding-left:30px}
+.pl50{padding-left:50px}
+.pl100{padding-left:100px}
+.pr5{padding-right:5px}
+.pr10{padding-right:10px}
+.pr15{padding-right:15px}
+.pr20{padding-right:20px}
+.pr30{padding-right:30px}
+.pr50{padding-right:50px}
+.pr100{padding-right:100px}
+
+/*设置p的字体*/
+p{
+	font-size: 12px;/*0.0625em × 12 = 0.750em */
+	line-height: 24px;/*18px(line-height) ÷ 12(font-size) = 1.5em */
+    margin:0 18px;/*18px(margin) ÷ 12(font-size) = 1.5em 
+}
+/*p img {
+				width: 7.5em; 1 ÷12( 父元素的font-size) × 90px(图片的宽度) = 7.5em 
+				height: 7.5em; 1 ÷12( 父元素的font-size) × 90px(图片的高度) = 7.5em 
+			}*/
+/*换行&#10*/
+/*Font-size=62.5%*/
+
+
+/*如果元素自身没有设置字体大小，那么元素自身上的所有属性值如“boder、width、height、padding、margin、line-height”等值，我们都可以按下面的公式来计算
+1 ÷ 父元素的font-size × 需要转换的像素值 = em值
+这一种千万要慢慢理解，不然很容易与第二点混了。如果元素设置了字体大小，那么字体大小的转换依旧按第二条公式计算，也就是下面的：
+1 ÷ 父元素的font-size × 需要转换的像素值 = em值
+那么元素设置了字体大小，此元素的其他属性，如“border、width、height、padding、margin、line-height”计算就需要按照下面的公式来计算：
+1 ÷ 元素自身的font-size × 需要转换的像素值 = em值*/
+
