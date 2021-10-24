@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+ 	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+ 	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+ 
+<hibernate-configuration>
+ 	<session-factory>
+ 		<property name="hibernate.connection.url">
+ 			jdbc:mysql://localhost/VillageSystem
+ 		</property>
+ 		<property name="hibernate.connection.driver_class">
+ 			com.mysql.jdbc.Driver
+ 		</property>
+ 		<property name="hibernate.connection.username">root</property>
+ 		<property name="hibernate.connection.password">root</property>
+ 		<property name="hibernate.dialect">
+ 			org.hibernate.dialect.MySQLDialect
+ 		</property>
+ 		<property name="hibernate.show_sql">true</property>
+ 		<property name="hibernate.current_session_context_class">
+ 			thread
+ 		</property>
+ 		<property name="connection.useUnicode">true</property>
+ 		<property name="connection.characterEncoding">UTF-8</property>
+ 
+		<mapping resource="com/it/model/User.hbm.xml" />
+ 		<mapping resource="com/it/model/UserLog.hbm.xml" />
+ 		<mapping resource="com/it/model/NoticeFile.hbm.xml" />
+ 		<mapping resource="com/it/model/ZhuFang.hbm.xml" />
+ 		<mapping resource="com/it/model/JiaoFei.hbm.xml" />
+ 		<mapping resource="com/it/model/TouSu.hbm.xml" />
+ 		<mapping resource="com/it/model/BaoXiu.hbm.xml" />
+ 		<mapping resource="com/it/model/CheWei.hbm.xml" />
+ 		<mapping resource="com/it/model/Chur.hbm.xml" />
+ 		<mapping resource="com/it/model/PingJia.hbm.xml" />
+ 		<mapping resource="com/it/model/Kuaidi.hbm.xml" />
+ 
+	</session-factory>
+</hibernate-configuration>
+ 
