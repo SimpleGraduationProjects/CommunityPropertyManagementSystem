@@ -1,7 +1,7 @@
-
+[全目录地址:https://www.blog996.com/md/2021-09-22-1632317852192.html](https://www.blog996.com/md/2021-09-22-1632317852192.html)
 # 52.CommunityPropertyManagementSystem
 
-<p>群: 123300273(大佬群 2TB学习资料,讲解)(入群获取sql文件)</p>
+<p>群: 123300273(入群获取sql文件)</p>
 <p>QQ: 1095737364(加好友获取sql文件)</p>
 
 <p><h1 align="center">52.小区物业管理系统</h1></p>
@@ -16,10 +16,17 @@
 
 ## 简介
 
-
-> 本代码来源于网络, 请入群(123300273)后联系群主索要sql文件!
-
-
+> 本代码来源于网络,仅供学习参考使用,请入群(123300273)后联系群主索要sql文件!
+>
+> 提供1.远程部署/2.修改代码/3.设计文档指导/4.框架代码讲解等服务
+>
+> 前台首页: http://localhost:8080/ssm_zxncpshop/index.do
+>
+> 用户: user   密码: 123456
+>
+> 后台登录: http://localhost:8080/ssm_zxncpshop/admin/login.jsp
+>
+> 管理员: admin   密码: 123456
 ## 环境
 
 - <b>IntelliJ IDEA 2009.3</b>
@@ -43,11 +50,10 @@
 
 ![](https://img2020.cnblogs.com/blog/588112/202110/588112-20211024163213575-1116346765.png)
 
+
+
 ## License
 
 ##### [个人站点: 全栈九九六(Java全栈知识资料下载)](https://www.blog996.com/)
 ##### [个人博客: 博客园精品博客](https://www.cnblogs.com/yysbolg/)
-##### [更多论文: 精品论文查看](https://www.cnblogs.com/yysbolg/category/1886262.html)
-##### [更多论文: 全目录查看](https://www.cnblogs.com/yysbolg/p/15321854.html)
-
-
+# [更多论文: 全目录查看](https://www.blog996.com/md/2021-09-22-1632317852192.html)
