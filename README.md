@@ -20,13 +20,11 @@
 >
 > 提供1.远程部署/2.修改代码/3.设计文档指导/4.框架代码讲解等服务
 >
-> 前台首页: http://localhost:8080/ssm_zxncpshop/index.do
+> 前台首页: http://localhost:8080/
 >
-> 用户: user   密码: 123456
->
-> 后台登录: http://localhost:8080/ssm_zxncpshop/admin/login.jsp
->
-> 管理员: admin   密码: 123456
+> 用户: admin   密码: 123456
+
+
 ## 环境
 
 - <b>IntelliJ IDEA 2009.3</b>
